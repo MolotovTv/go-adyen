@@ -1,0 +1,8 @@
+# MacOS garbage
+.DS_Store
+.DS_STORE
+
+*.out
+coverage
+# Temp files
+*~*
