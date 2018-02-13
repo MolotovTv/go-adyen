@@ -50,8 +50,14 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 	if !strings.HasPrefix(path, "/") {
 		path = "/" + path
 	}
+
 	var b io.Reader
 	path = c.getURL() + path
+
+	if debug {
+		log.Printf("Call %v\n", path)
+	}
+
 	if strings.ToUpper(method) == "GET" {
 		return errors.New("Method GET not allowed.")
 	} else {
