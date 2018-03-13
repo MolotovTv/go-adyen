@@ -39,9 +39,20 @@ func (c *Client) getURL() string {
 }
 
 func New(config *Configuration) *Client {
+
+	transport := &http.Transport{}
+
+	if proxy, err := config.GetHttpProxy(); err != nil {
+		log.Println(err)
+	} else {
+		transport.Proxy = proxy
+	}
+
 	return &Client{
-		config:     config,
-		HttpClient: &http.Client{},
+		config: config,
+		HttpClient: &http.Client{
+			Transport: transport,
+		},
 	}
 }
 

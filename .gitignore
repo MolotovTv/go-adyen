@@ -2,6 +2,8 @@
 .DS_Store
 .DS_STORE
 
+vendor*
+
 *.out
 coverage
 # Temp files
