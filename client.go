@@ -9,12 +9,12 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/mcornut/go-adyen/constants"
+	log "github.com/molotovtv/go-logger"
 	"github.com/pkg/errors"
 )
 
@@ -43,7 +43,9 @@ func New(config *Configuration) *Client {
 	transport := &http.Transport{}
 
 	if proxy, err := config.GetHttpProxy(); err != nil {
-		log.Println(err)
+		log.Error(
+			errors.Wrap(err, "Adyen - Client - Proxy configuration"),
+		)
 	} else {
 		transport.Proxy = proxy
 	}
@@ -66,7 +68,7 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 	path = c.getURL() + path
 
 	if debug {
-		log.Printf("Call %v\n", path)
+		log.Debugf("Call %v\n", path)
 	}
 
 	if strings.ToUpper(method) == "GET" {
@@ -97,18 +99,18 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 // the environment's HTTP client to execute the request and unmarshals the response
 // into v. It also handles unmarshaling errors returned by the API.
 func (c *Client) do(req *http.Request, v interface{}) error {
-	log.Printf("Requesting %v %q\n", req.Method, req.URL.Path)
+	log.Infof("Requesting %v %q\n", req.Method, req.URL.Path)
 	start := time.Now()
 
 	res, err := c.HttpClient.Do(req)
 
 	if debug {
-		log.Printf("Completed in %v\n", time.Since(start))
+		log.Debugf("Completed in %v\n", time.Since(start))
 	}
 
 	if res.StatusCode >= 400 {
 		if debug {
-			log.Printf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
+			log.Debugf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
 		}
 
 		adyenErr := &Error{
@@ -148,12 +150,14 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 
 	resBody, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Printf("Cannot parse Adyen response: %v\n", err)
+		log.Error(
+			errors.Wrap(err, "Cannot parse Adyen response"),
+		)
 		return err
 	}
 
 	if debug {
-		log.Printf("Adyen Response: %v\n", string(resBody))
+		log.Debugf("Adyen Response: %v\n", string(resBody))
 	}
 
 	if v != nil {
