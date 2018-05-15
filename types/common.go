@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// ContractType const
 type ContractType string
 
 // Contract types
@@ -16,6 +17,15 @@ const (
 	ContractRecurring         ContractType = "RECURRING"
 	ContractOneClick          ContractType = "ONECLICK"
 	ContractRecurringOneClick ContractType = "RECURRING,ONECLICK"
+)
+
+// InteractionType const
+type InteractionType string
+
+// Interaction types
+const (
+	InteractionEcommerce InteractionType = "Ecommerce"
+	InteractionContAuth  InteractionType = "ContAuth"
 )
 
 const expiryTimeFormat = "01/2006"

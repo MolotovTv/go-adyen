@@ -48,7 +48,7 @@ type PaymentAuthoriseOneClickParams struct {
 	ShopperStatement                 string             `json:"shopperStatement"`
 	SelectedRecurringDetailReference string             `json:"selectedRecurringDetailReference"`
 	Recurring                        *RecurringContract `json:"recurring"`
-	ShopperInteraction               string             `json:"shopperInteraction"` //Ecommerce
+	ShopperInteraction               InteractionType    `json:"shopperInteraction"` //Ecommerce
 	MerchantAccount                  string             `json:"merchantAccount"`
 }
 
@@ -63,7 +63,7 @@ type PaymentAuthoriseRecurringParams struct {
 	ShopperStatement                 string             `json:"shopperStatement"`
 	SelectedRecurringDetailReference string             `json:"selectedRecurringDetailReference"`
 	Recurring                        *RecurringContract `json:"recurring"`
-	ShopperInteraction               string             `json:"shopperInteraction"` // ContAuth
+	ShopperInteraction               InteractionType    `json:"shopperInteraction"` // ContAuth
 	MerchantAccount                  string             `json:"merchantAccount"`
 }
 
