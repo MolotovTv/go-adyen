@@ -13,6 +13,7 @@ import (
 	"github.com/mcornut/go-adyen/types"
 )
 
+// ClientRecurring interface
 type ClientRecurring interface {
 	ListRecurringDetails(params *types.RecurringDetailsParams) (*types.RecurringDetails, error)
 	Disable(params *types.RecurringDisableParams) (*types.RecurringDisable, error)

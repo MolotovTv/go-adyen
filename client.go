@@ -18,6 +18,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+// Client struct
 type Client struct {
 	config     *Configuration
 	HttpClient *http.Client
@@ -38,11 +39,12 @@ func (c *Client) getURL() string {
 	return constants.SandboxURL
 }
 
+// New func
 func New(config *Configuration) *Client {
 
 	transport := &http.Transport{}
 
-	if proxy, err := config.GetHttpProxy(); err != nil {
+	if proxy, err := config.GetHTTPProxy(); err != nil {
 		log.Error(
 			errors.Wrap(err, "Adyen - Client - Proxy configuration"),
 		)
@@ -72,7 +74,7 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 	}
 
 	if strings.ToUpper(method) == "GET" {
-		return errors.New("Method GET not allowed.")
+		return errors.New("Method GET not allowed")
 	} else {
 		jsonBody, err := json.Marshal(body)
 		if err != nil {

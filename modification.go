@@ -12,12 +12,14 @@ import (
 	"github.com/mcornut/go-adyen/types"
 )
 
+// ClientModification interface
 type ClientModification interface {
 	Capture(params *types.ModificationCaptureParams) (*types.ModificationCapture, error)
 	Cancel(params *types.ModificationCancelParams) (*types.ModificationCancel, error)
 	Refund(params *types.ModificationRefundParams) (*types.ModificationRefund, error)
 	CancelOrRefund(params *types.ModificationCancelOrRefundParams) (*types.ModificationCancelOrRefund, error)
 	AdjustAuthorise(params *types.ModificationAdjustAuthoriseParams) (*types.ModificationAdjustAuthorise, error)
+	TechnicalCancel(params *types.ModificationTechnicalCancelParams) (*types.ModificationTechnicalCancelParams, error)
 }
 
 // Capture func
@@ -58,4 +60,12 @@ func (c Client) AdjustAuthorise(params *types.ModificationAdjustAuthoriseParams)
 	err := c.call("POST", fmt.Sprintf("/pal/servlet/Payment/%v/adjustAuthorisation", constants.APIPaymentV30), params, adyenAdjustAuthorise)
 
 	return adyenAdjustAuthorise, err
+}
+
+// TechnicalCancel func
+func (c Client) TechnicalCancel(params *types.ModificationTechnicalCancelParams) (*types.ModificationTechnicalCancel, error) {
+	adyenTechnicalCancel := &types.ModificationTechnicalCancel{}
+	err := c.call("POST", fmt.Sprintf("/pal/servlet/Payment/%v/technicalCancel", constants.APIPaymentV30), params, adyenTechnicalCancel)
+
+	return adyenTechnicalCancel, err
 }

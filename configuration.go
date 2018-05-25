@@ -24,7 +24,8 @@ func NewConfiguration() Configuration {
 	return Configuration{}
 }
 
-func (c *Configuration) GetHttpProxy() (func(*http.Request) (*url.URL, error), error) {
+// GetHTTPProxy func
+func (c *Configuration) GetHTTPProxy() (func(*http.Request) (*url.URL, error), error) {
 	proxyURL, err := url.Parse(fmt.Sprintf("http://%s:%d", c.ProxyHost, c.ProxyPort))
 
 	if err != nil {

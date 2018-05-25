@@ -1,3 +1,3 @@
 # go-adyen
 
-## WIP BABY
+## Work In Progress

@@ -43,36 +43,49 @@ type ModificationAdjustAuthoriseParams struct {
 	Reference          string          `json:"reference"`
 }
 
+// ModificationTechnicalCancelParams struct
+type ModificationTechnicalCancelParams struct {
+	MerchantAccount           string `json:"merchantAccount"`
+	OriginalMerchantReference string `json:"originalMerchantReference"`
+	Reference                 string `json:"reference"`
+}
+
 /********************************************/
 /*            RESPONSE FROM ADYEN           */
 /********************************************/
 
 // ModificationCapture is the resource representing a Adyen payment.
 type ModificationCapture struct {
-	// FIXME with good response from adyen
-	Todo string `json:"todo"`
+	PspReference string `json:"pspReference"`
+	Response     string `json:"response"` // "response": "[capture-received]"
 }
 
 // ModificationCancel is the resource representing a Adyen payment.
 type ModificationCancel struct {
-	// FIXME with good response from adyen
-	Todo string `json:"todo"`
+	PspReference string `json:"pspReference"`
+	Response     string `json:"response"` // "[cancel-received]"
 }
 
 // ModificationRefund struct
 type ModificationRefund struct {
-	// FIXME with good response from adyen
-	Todo string `json:"todo"`
+	PspReference string `json:"pspReference"`
+	Response     string `json:"response"` //  "[refund-received]"
 }
 
 // ModificationCancelOrRefund struct
 type ModificationCancelOrRefund struct {
-	// FIXME with good response from adyen
-	Todo string `json:"todo"`
+	PspReference string `json:"pspReference"`
+	Response     string `json:"response"` // "[cancelOrRefund-received]"
 }
 
 // ModificationAdjustAuthorise struct
 type ModificationAdjustAuthorise struct {
-	// FIXME with good response from adyen
-	Todo string `json:"todo"`
+	PspReference string `json:"pspReference"`
+	Response     string `json:"response"` //  "[adjustAuthorisation-received]"
+}
+
+// ModificationTechnicalCancel struct
+type ModificationTechnicalCancel struct {
+	PspReference string `json:"pspReference"`
+	Response     string `json:"response"` // "[technical-cancel-received]"
 }

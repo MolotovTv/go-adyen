@@ -11,6 +11,7 @@ import (
 	"github.com/mcornut/go-adyen/types"
 )
 
+// ClientPayment interface
 type ClientPayment interface {
 	Authorise(params *types.PaymentAuthoriseParams) (*types.PaymentAuthorise, error)
 	Authorise3d(params *types.PaymentAuthorise3dParams) (*types.PaymentAuthorise, error)
