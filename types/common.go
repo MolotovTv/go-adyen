@@ -48,19 +48,32 @@ type RecurringContract struct {
 
 // AdditionalData struct
 type AdditionalData struct {
-	AuthorisedAmountCurrency string      `json:"authorisedAmountCurrency"`
-	AuthorisedAmountValue    string      `json:"authorisedAmountValue"`
-	CardBin                  string      `json:"cardBin"`
-	CardEncryptedJSON        string      `json:"card.encrypted.json"`
-	CardIssuingCountry       string      `json:"cardIssuingCountry"`
-	CardHolderName           string      `json:"cardHolderName"`
-	CardPaymentMethod        string      `json:"cardPaymentMethod"`
-	CardSummary              string      `json:"cardSummary"`
-	ExecuteThreeD            string      `json:"executeThreeD"`
-	ExpiryDate               *ExpiryTime `json:"expiryDate"`
-	IndustryUsage            string      `json:"industryUsage"`
-	PaymentMethod            string      `json:"paymentMethod"`
-	PaymentMethodVariant     string      `json:"paymentMethodVariant"`
+	AuthCode                 string         `json:"authCode"`
+	AvsResult                string         `json:"avsResult"`
+	Alias                    string         `json:"alias"`
+	AliasType                string         `json:"aliasType"`
+	AuthorisedAmountCurrency string         `json:"authorisedAmountCurrency"`
+	AuthorisedAmountValue    string         `json:"authorisedAmountValue"`
+	CardBin                  string         `json:"cardBin"`
+	CardEncryptedJSON        string         `json:"card.encrypted.json"`
+	CardIssuingCountry       string         `json:"cardIssuingCountry"`
+	CardHolderName           string         `json:"cardHolderName"`
+	CardPaymentMethod        string         `json:"cardPaymentMethod"`
+	CardSummary              string         `json:"cardSummary"`
+	CvcResult                string         `json:"cvcResult"`
+	ExecuteThreeD            string         `json:"executeThreeD"`
+	ExpiryDate               *ExpiryTime    `json:"expiryDate"`
+	IndustryUsage            string         `json:"industryUsage"`
+	IssuerCountry            string         `json:"issuerCountry"`
+	PaymentMethod            string         `json:"paymentMethod"`
+	PaymentMethodVariant     string         `json:"paymentMethodVariant"`
+	Recurring                *RecurringData `json:"recurring"`
+}
+
+// RecurringData struct
+type RecurringData struct {
+	ShopperReference         string `json:"shopperReference"`
+	RecurringDetailReference string `json:"recurringDetailReference"`
 }
 
 // DateTime struct
