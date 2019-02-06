@@ -48,26 +48,27 @@ type RecurringContract struct {
 
 // AdditionalData struct
 type AdditionalData struct {
-	AuthCode                 string         `json:"authCode"`
-	AvsResult                string         `json:"avsResult"`
-	Alias                    string         `json:"alias"`
-	AliasType                string         `json:"aliasType"`
-	AuthorisedAmountCurrency string         `json:"authorisedAmountCurrency"`
-	AuthorisedAmountValue    string         `json:"authorisedAmountValue"`
-	CardBin                  string         `json:"cardBin"`
-	CardEncryptedJSON        string         `json:"card.encrypted.json"`
-	CardIssuingCountry       string         `json:"cardIssuingCountry"`
-	CardHolderName           string         `json:"cardHolderName"`
-	CardPaymentMethod        string         `json:"cardPaymentMethod"`
-	CardSummary              string         `json:"cardSummary"`
-	CvcResult                string         `json:"cvcResult"`
-	ExecuteThreeD            string         `json:"executeThreeD"`
-	ExpiryDate               *ExpiryTime    `json:"expiryDate"`
-	IndustryUsage            string         `json:"industryUsage"`
-	IssuerCountry            string         `json:"issuerCountry"`
-	PaymentMethod            string         `json:"paymentMethod"`
-	PaymentMethodVariant     string         `json:"paymentMethodVariant"`
-	Recurring                *RecurringData `json:"recurring"`
+	AuthCode                          string         `json:"authCode,omitempty"`
+	AvsResult                         string         `json:"avsResult,omitempty"`
+	Alias                             string         `json:"alias,omitempty"`
+	AliasType                         string         `json:"aliasType,omitempty"`
+	AuthorisedAmountCurrency          string         `json:"authorisedAmountCurrency,omitempty"`
+	AuthorisedAmountValue             string         `json:"authorisedAmountValue,omitempty"`
+	CardBin                           string         `json:"cardBin,omitempty"`
+	CardEncryptedJSON                 string         `json:"card.encrypted.json,omitempty"`
+	CardIssuingCountry                string         `json:"cardIssuingCountry,omitempty"`
+	CardHolderName                    string         `json:"cardHolderName,omitempty"`
+	CardPaymentMethod                 string         `json:"cardPaymentMethod,omitempty"`
+	CardSummary                       string         `json:"cardSummary,omitempty"`
+	CvcResult                         string         `json:"cvcResult,omitempty"`
+	ExecuteThreeD                     string         `json:"executeThreeD,omitempty"`
+	ExpiryDate                        *ExpiryTime    `json:"expiryDate,omitempty"`
+	IndustryUsage                     string         `json:"industryUsage,omitempty"`
+	IssuerCountry                     string         `json:"issuerCountry,omitempty"`
+	PaymentMethod                     string         `json:"paymentMethod,omitempty"`
+	PaymentMethodVariant              string         `json:"paymentMethodVariant,omitempty"`
+	Recurring                         *RecurringData `json:"recurring,omitempty"`
+	RequestedTestAcquirerResponseCode int            `json:"RequestedTestAcquirerResponseCode,omitempty"`
 }
 
 // RecurringData struct
