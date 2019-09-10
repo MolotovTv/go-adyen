@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/molotovtvt/go-adyen/constants"
+	"github.com/molotovtv/go-adyen/constants"
 
-	"github.com/molotovtvt/go-adyen/types"
+	"github.com/molotovtv/go-adyen/types"
 )
 
 // ClientRecurring interface
