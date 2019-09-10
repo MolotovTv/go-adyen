@@ -7,9 +7,9 @@ package adyen
 import (
 	"fmt"
 
-	"github.com/mcornut/go-adyen/constants"
+	"github.com/molotovtvt/go-adyen/constants"
 
-	"github.com/mcornut/go-adyen/types"
+	"github.com/molotovtvt/go-adyen/types"
 )
 
 // ClientModification interface

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mcornut/go-adyen/constants"
+	"github.com/molotovtvt/go-adyen/constants"
 	log "github.com/molotovtv/go-logger"
 	"github.com/pkg/errors"
 )
@@ -87,7 +87,7 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 	}
 
 	req.SetBasicAuth(c.config.Username, c.config.Password)
-	req.Header.Add("User-Agent", "Mcornut/v1 GoAdyenSdk/"+Version)
+	req.Header.Add("User-Agent", "molotovtvt/v1 GoAdyenSdk/"+Version)
 	if body != nil {
 		req.Header.Add("Content-Type", "application/json")
 	}
