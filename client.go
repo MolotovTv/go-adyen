@@ -69,9 +69,7 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 	var b io.Reader
 	path = c.getURL() + path
 
-	if debug {
-		log.Debugf("Call %v\n", path)
-	}
+	log.Debugf("Call %v\n", path)
 
 	if strings.ToUpper(method) == "GET" {
 		return errors.New("Method GET not allowed")
@@ -106,14 +104,10 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 
 	res, err := c.HttpClient.Do(req)
 
-	if debug {
-		log.Debugf("Completed in %v\n", time.Since(start))
-	}
+	log.Debugf("Completed in %v\n", time.Since(start))
 
 	if res.StatusCode >= 400 {
-		if debug {
-			log.Debugf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
-		}
+		log.Debugf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
 
 		adyenErr := &Error{
 			Type:           ErrorType(res.Status),
@@ -158,9 +152,7 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 		return err
 	}
 
-	if debug {
-		log.Debugf("Adyen Response: %v\n", string(resBody))
-	}
+	log.Debugf("Adyen Response: %v\n", string(resBody))
 
 	if v != nil {
 		return json.Unmarshal(resBody, v)
