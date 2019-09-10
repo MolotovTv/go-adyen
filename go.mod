@@ -1,4 +1,4 @@
-module github.com/MolotovTv/go-adyen
+module github.com/molotovtv/go-adyen
 
 go 1.12
 
