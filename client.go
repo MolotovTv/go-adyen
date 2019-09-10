@@ -69,7 +69,7 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 	var b io.Reader
 	path = c.getURL() + path
 
-	log.Debugf("Call %v\n", path)
+	log.Infof("Call %v\n", path)
 
 	if strings.ToUpper(method) == "GET" {
 		return errors.New("Method GET not allowed")
@@ -99,15 +99,15 @@ func (c *Client) call(method string, path string, body interface{}, v interface{
 // the environment's HTTP client to execute the request and unmarshals the response
 // into v. It also handles unmarshaling errors returned by the API.
 func (c *Client) do(req *http.Request, v interface{}) error {
-	log.Infof("Requesting %v %q\n", req.Method, req.URL.Path)
+	log.Infof("Requesting %v %q", req.Method, req.URL.Path)
 	start := time.Now()
 
 	res, err := c.HttpClient.Do(req)
 
-	log.Debugf("Completed in %v\n", time.Since(start))
+	log.Infof("Completed in %v", time.Since(start))
 
 	if res.StatusCode >= 400 {
-		log.Debugf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
+		log.Warnf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
 
 		adyenErr := &Error{
 			Type:           ErrorType(res.Status),
@@ -152,7 +152,7 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 		return err
 	}
 
-	log.Debugf("Adyen Response: %v\n", string(resBody))
+	log.Infof("Adyen Response: %v\n", string(resBody))
 
 	if v != nil {
 		return json.Unmarshal(resBody, v)
