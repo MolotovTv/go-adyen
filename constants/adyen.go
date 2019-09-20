@@ -5,10 +5,10 @@
 package constants
 
 // SandboxURL Adyen URLs for APIs.
-const SandboxURL = "https://pal-test.adyen.com"
+const SandboxURL = "http://127.0.0.1:12199"
 
 // LiveURL Adyen URLs for APIs.
-const LiveURL = "https://pal-live.adyen.com"
+const LiveURL = "http://127.0.0.1:12199"
 
 // APIPaymentV30 is the currently supported API version
 const APIPaymentV30 = "v30"
