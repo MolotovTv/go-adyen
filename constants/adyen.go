@@ -12,6 +12,7 @@ const LiveURL = "https://pal-live.adyen.com"
 
 // APIPaymentV30 is the currently supported API version
 const APIPaymentV30 = "v30"
+const APIPaymentV68 = "v68"
 
 // APIRecurringV25 is the currently supported API version
 const APIRecurringV25 = "v25"
