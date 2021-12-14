@@ -7,7 +7,6 @@ package adyen
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/davecgh/go-spew/spew"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -110,7 +109,6 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 	}
 
 	log.Infof("Completed in %v", time.Since(start))
-	log.Infof("Response %s:", spew.Sdump(res))
 
 	if res.StatusCode >= 400 {
 		log.Warnf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
@@ -138,6 +136,7 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 			adyenErr.Err = &NotFoundError{adyenErr: adyenErr}
 
 		case ErrorTypeUnprocessable:
+			log.Error(res.Body)
 			adyenErr.Err = &UnprocessableError{adyenErr: adyenErr}
 
 		default:
