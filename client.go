@@ -7,6 +7,7 @@ package adyen
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/davecgh/go-spew/spew"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -105,6 +106,7 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 	res, err := c.HttpClient.Do(req)
 
 	log.Infof("Completed in %v", time.Since(start))
+	log.Infof("Response %s:", spew.Sdump(res))
 
 	if res.StatusCode >= 400 {
 		log.Warnf("StatusCode %v with Status %v\n", res.StatusCode, res.Status)
