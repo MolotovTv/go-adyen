@@ -49,7 +49,7 @@ type PaymentAuthoriseOneClickParams struct {
 	ShopperStatement                 string             `json:"shopperStatement"`
 	SelectedRecurringDetailReference string             `json:"selectedRecurringDetailReference"`
 	Recurring                        *RecurringContract `json:"recurring"`
-	ShopperInteraction               InteractionType    `json:"shopperInteraction"` //Ecommerce
+	ShopperInteraction               InteractionType    `json:"shopperInteraction"` // Ecommerce
 	MerchantAccount                  string             `json:"merchantAccount"`
 }
 
@@ -108,4 +108,7 @@ type PaymentAuthorise struct {
 	PspReference   string          `json:"pspReference"`
 	ResultCode     string          `json:"resultCode"`
 	AuthCode       string          `json:"authCode"`
+	Md             string          `json:"md,omitempty"`
+	PaRequest      string          `json:"paRequest,omitempty"`
+	IssuerUrl      string          `json:"issuerUrl,omitempty"`
 }
