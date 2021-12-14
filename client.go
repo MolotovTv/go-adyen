@@ -104,6 +104,9 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 	start := time.Now()
 
 	res, err := c.HttpClient.Do(req)
+	if err != nil {
+		log.Error(err)
+	}
 
 	log.Infof("Completed in %v", time.Since(start))
 	log.Infof("Response %s:", spew.Sdump(res))
