@@ -44,14 +44,13 @@ func New(config *Configuration) *Client {
 
 	transport := &http.Transport{}
 
-	/*
-		if proxy, err := config.GetHTTPProxy(); err != nil {
-			log.Error(
-				errors.Wrap(err, "Adyen - Client - Proxy configuration"),
-			)
-		} else {
-			transport.Proxy = proxy
-		} */
+	if proxy, err := config.GetHTTPProxy(); err != nil {
+		log.Error(
+			errors.Wrap(err, "Adyen - Client - Proxy configuration"),
+		)
+	} else {
+		transport.Proxy = proxy
+	}
 
 	return &Client{
 		config: config,
@@ -136,7 +135,6 @@ func (c *Client) do(req *http.Request, v interface{}) error {
 			adyenErr.Err = &NotFoundError{adyenErr: adyenErr}
 
 		case ErrorTypeUnprocessable:
-			log.Error(res.Body)
 			adyenErr.Err = &UnprocessableError{adyenErr: adyenErr}
 
 		default:
