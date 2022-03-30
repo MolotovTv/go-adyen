@@ -70,7 +70,6 @@ type AdditionalData struct {
 	PaymentMethodVariant              string         `json:"paymentMethodVariant,omitempty"`
 	Recurring                         *RecurringData `json:"recurring,omitempty"`
 	RequestedTestAcquirerResponseCode int            `json:"RequestedTestAcquirerResponseCode,omitempty"`
-	ShopperReference                  string         `json:"shopperReference,omitempty"`
 }
 
 // RecurringData struct
