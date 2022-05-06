@@ -65,6 +65,7 @@ type AdditionalData struct {
 	ExpiryDate                        *ExpiryTime    `json:"expiryDate,omitempty"`
 	IndustryUsage                     string         `json:"industryUsage,omitempty"`
 	IssuerCountry                     string         `json:"issuerCountry,omitempty"`
+	MerchantReference                 string         `json:"merchantReference,omitempty"`
 	PaymentMethod                     string         `json:"paymentMethod,omitempty"`
 	PaymentMethodVariant              string         `json:"paymentMethodVariant,omitempty"`
 	Recurring                         *RecurringData `json:"recurring,omitempty"`
