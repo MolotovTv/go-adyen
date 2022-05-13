@@ -111,4 +111,5 @@ type PaymentAuthorise struct {
 	Md             string          `json:"md,omitempty"`
 	PaRequest      string          `json:"paRequest,omitempty"`
 	IssuerUrl      string          `json:"issuerUrl,omitempty"`
+	RefusalReason  string          `json:"refusalReason"`
 }
